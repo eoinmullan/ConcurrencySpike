@@ -8,7 +8,7 @@ namespace ConcurrencySpike {
         private bool heartbeatOn = true;
         private int heartbeatInterval;
 
-        public string Description => "System.Threading.Timer Heartbeat";
+        public override string Description => "System.Threading.Timer Heartbeat";
 
         public override bool HeartbeatOn {
             get { return heartbeatOn; }

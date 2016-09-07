@@ -41,6 +41,7 @@ namespace ConcurrencySpike {
             }
         }
 
+        public abstract string Description { get; }
         public abstract bool HeartbeatOn { get; set; }
 
         protected void RaisePropertyChanged(string propertyName) {

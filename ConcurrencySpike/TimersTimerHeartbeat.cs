@@ -1,12 +1,11 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Timers;
 
 namespace ConcurrencySpike {
     public class TimersTimerHeartbeat : Heartbeat {
         private Timer timersTimerHeartbeat;
 
-        public string Description => "System.Timers.Timer Heartbeat";
+        public override string Description => "System.Timers.Timer Heartbeat";
 
         public override bool HeartbeatOn {
             get { return timersTimerHeartbeat.Enabled; }
