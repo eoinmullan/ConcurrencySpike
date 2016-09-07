@@ -33,7 +33,7 @@
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="Background" Value="DarkSlateGray" />
             <Setter Property="Width" Value="50" />
-            <Setter Property="Padding" Value="3" />
+            <Setter Property="Padding" Value="3,6,3,3" />
             <Setter Property="TextAlignment" Value="Center" />
             <Setter Property="Foreground" Value="WhiteSmoke" />
         </Style>
@@ -41,6 +41,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition />
@@ -80,5 +82,8 @@
             <Slider Grid.Row="1" Value="{Binding WorkUnitIntervalMs, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Minimum="1" Maximum="2000"  />
             <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding WorkUnitIntervalMs}" />
         </Grid>
+
+        <local:HeartbeatView Grid.Row="2" DataContext="{Binding ThreadingTimerHeartbeat}" Grid.ColumnSpan="4" />
+        <local:HeartbeatView Grid.Row="3" DataContext="{Binding TimersTimerHeartbeat}" Grid.ColumnSpan="4" />
     </Grid>
 </Window>

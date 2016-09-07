@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using System.Timers;
 
 namespace ConcurrencySpike {
-    public class MainWindowViewModel : INotifyPropertyChanged {
+    public class MainWindowViewModel : INotifyPropertyChanged { 
+        private const int HeartbeatInterval = 1000;
+
         private int threadPoolThreadsInUse;
         private int workUnitDurationMs = 1000;
         private int workUnitIntervalMs = 1000;
@@ -17,6 +19,9 @@ namespace ConcurrencySpike {
         private Thread variableWorkloadThread;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public Heartbeat ThreadingTimerHeartbeat => new ThreadingTimerHeartbeat(stopwatch, HeartbeatInterval);
+        public Heartbeat TimersTimerHeartbeat => new TimersTimerHeartbeat(stopwatch, HeartbeatInterval);
 
         public MainWindowViewModel() {
             stopwatch.Start();
@@ -71,10 +76,6 @@ namespace ConcurrencySpike {
                 taskLatency = value;
                 RaisePropertyChanged(nameof(TaskLatency));
             }
-        }
-
-        private void StartHeartbeat() {
-
         }
 
         private void StartVariableWorkloadThread() {
