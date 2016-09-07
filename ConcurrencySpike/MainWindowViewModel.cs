@@ -12,25 +12,30 @@ namespace ConcurrencySpike {
         private int workUnitIntervalMs = 1000;
         private long taskLatency = 0;
 
-        private System.Timers.Timer checkThreadUsageTimer = new System.Timers.Timer(1000) { AutoReset = true };
         private Stopwatch stopwatch = new Stopwatch();
+        private Thread threadPoolMonitorThread;
+        private Thread variableWorkloadThread;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public MainWindowViewModel() {
             stopwatch.Start();
-            StartVariableWorkload();
-            checkThreadUsageTimer.Elapsed += CheckThreadUsage;
-            checkThreadUsageTimer.Start();
+            StartVariableWorkloadThread();
+            StartThreadPoolMonitor();
         }
 
-        private void CheckThreadUsage(object sender, ElapsedEventArgs e) {
-            int maxThreads = 0;
-            int completionPortThreads = 0;
-            int availableThreads = 0;
-            ThreadPool.GetMaxThreads(out maxThreads, out completionPortThreads);
-            ThreadPool.GetAvailableThreads(out availableThreads, out completionPortThreads);
-            ThreadPoolthreadsInUse = maxThreads - availableThreads;
+        private void StartThreadPoolMonitor() {
+            threadPoolMonitorThread = new Thread(() => {
+                int maxThreads = 0;
+                int completionPortThreads = 0;
+                int availableThreads = 0;
+                while (true) {
+                    ThreadPool.GetMaxThreads(out maxThreads, out completionPortThreads);
+                    ThreadPool.GetAvailableThreads(out availableThreads, out completionPortThreads);
+                    ThreadPoolthreadsInUse = maxThreads - availableThreads;
+                }
+            });
+            threadPoolMonitorThread.Start();
         }
 
         public int ThreadPoolthreadsInUse {
@@ -71,8 +76,8 @@ namespace ConcurrencySpike {
 
         }
 
-        private void StartVariableWorkload() {
-            Task.Factory.StartNew(() => {
+        private void StartVariableWorkloadThread() {
+            variableWorkloadThread = new Thread(() => {
                 while (true) {
                     Thread.Sleep(workUnitIntervalMs);
                     var queueTime = stopwatch.ElapsedMilliseconds;
@@ -81,7 +86,8 @@ namespace ConcurrencySpike {
                         Thread.Sleep(WorkUnitDurationMs);
                     });
                 }
-            }, TaskCreationOptions.LongRunning);
+            });
+            variableWorkloadThread.Start();
         }
 
         private void RaisePropertyChanged(string propertyName) {
