@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Timers;
 
 namespace ConcurrencySpike {
@@ -6,6 +7,14 @@ namespace ConcurrencySpike {
         private Timer timersTimerHeartbeat;
 
         public string Description => "System.Timers.Timer Heartbeat";
+
+        public override bool HeartbeatOn {
+            get { return timersTimerHeartbeat.Enabled; }
+            set {
+                timersTimerHeartbeat.Enabled = value;
+                RaisePropertyChanged(nameof(HeartbeatOn));
+            }
+        }
 
         public TimersTimerHeartbeat(Stopwatch stopwatch, int heartbeatInterval) : base(stopwatch, heartbeatInterval) {
             timersTimerHeartbeat = new Timer(heartbeatInterval) { AutoReset = true };

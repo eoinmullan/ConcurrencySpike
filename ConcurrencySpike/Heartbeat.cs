@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace ConcurrencySpike {
-    public class Heartbeat : INotifyPropertyChanged {
+    public abstract class Heartbeat : INotifyPropertyChanged {
         private long lastHeartbeatTime;
         private long heartbeatLatency = 0;
         private bool heartbeatIndicatorOn;
@@ -41,7 +41,9 @@ namespace ConcurrencySpike {
             }
         }
 
-        private void RaisePropertyChanged(string propertyName) {
+        public abstract bool HeartbeatOn { get; set; }
+
+        protected void RaisePropertyChanged(string propertyName) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
