@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DedicatedThreadHeartbeat.cs" />
     <Compile Include="Heartbeat.cs" />
     <Compile Include="ThreadingTimerHeartbeat.cs" />
     <Compile Include="TimersTimerHeartbeat.cs" />

@@ -45,6 +45,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -83,7 +84,8 @@
             <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding WorkUnitIntervalMs}" />
         </Grid>
 
-        <local:HeartbeatView Grid.Row="2" DataContext="{Binding ThreadingTimerHeartbeat}" Grid.ColumnSpan="4" />
-        <local:HeartbeatView Grid.Row="3" DataContext="{Binding TimersTimerHeartbeat}" Grid.ColumnSpan="4" />
+        <local:HeartbeatView Grid.Row="2" DataContext="{Binding ThreadingTimerHeartbeat}" Grid.ColumnSpan="2" />
+        <local:HeartbeatView Grid.Row="3" DataContext="{Binding TimersTimerHeartbeat}" Grid.ColumnSpan="2" />
+        <local:HeartbeatView Grid.Row="4" DataContext="{Binding DedicatedThreadHeartbeat}" Grid.ColumnSpan="2" />
     </Grid>
 </Window>

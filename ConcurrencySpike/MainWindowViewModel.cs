@@ -20,6 +20,7 @@ namespace ConcurrencySpike {
 
         public Heartbeat ThreadingTimerHeartbeat => new ThreadingTimerHeartbeat(stopwatch, HeartbeatInterval);
         public Heartbeat TimersTimerHeartbeat => new TimersTimerHeartbeat(stopwatch, HeartbeatInterval);
+        public Heartbeat DedicatedThreadHeartbeat => new DedicatedThreadHeartbeat(stopwatch, HeartbeatInterval);
 
         public MainWindowViewModel() {
             stopwatch.Start();
