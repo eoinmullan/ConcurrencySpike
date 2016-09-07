@@ -35,6 +35,7 @@ namespace ConcurrencySpike {
                     ThreadPoolthreadsInUse = maxThreads - availableThreads;
                 }
             });
+            threadPoolMonitorThread.IsBackground = true;
             threadPoolMonitorThread.Start();
         }
 
@@ -87,6 +88,7 @@ namespace ConcurrencySpike {
                     });
                 }
             });
+            variableWorkloadThread.IsBackground = true;
             variableWorkloadThread.Start();
         }
 
