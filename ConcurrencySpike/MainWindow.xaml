@@ -56,7 +56,7 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Orientation="Vertical">
-            <Label Content="Current Task Jitter:" HorizontalAlignment="Center" />
+            <Label Content="Current Task Latency (ms):" HorizontalAlignment="Center" />
             <TextBlock Text="{Binding TaskLatency}" />
         </StackPanel>
 
