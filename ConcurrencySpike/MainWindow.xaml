@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConcurrencySpike"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="400" Width="525">
     
     <Window.Background>
         <LinearGradientBrush EndPoint="0.504,1.5" StartPoint="0.504,0.03">
@@ -41,6 +41,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -85,9 +86,11 @@
             <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding WorkUnitIntervalMs}" />
         </Grid>
 
-        <local:HeartbeatView Grid.Row="2" DataContext="{Binding TaskRunHeartbeat}" Grid.ColumnSpan="2" />
-        <local:HeartbeatView Grid.Row="3" DataContext="{Binding ThreadingTimerHeartbeat}" Grid.ColumnSpan="2" />
-        <local:HeartbeatView Grid.Row="4" DataContext="{Binding TimersTimerHeartbeat}" Grid.ColumnSpan="2" />
-        <local:HeartbeatView Grid.Row="5" DataContext="{Binding DedicatedThreadHeartbeat}" Grid.ColumnSpan="2" />
+        <Label Grid.Row="2" Content="Count" Padding="2" Margin="65,5,0,0" Height="20" />
+        <Label Grid.Row="2" Grid.Column="1" Content="Interval" Padding="2" Margin="60,5,0,0" Height="20" />
+        <local:HeartbeatView Grid.Row="3" DataContext="{Binding TaskRunHeartbeat}" Grid.ColumnSpan="2" />
+        <local:HeartbeatView Grid.Row="4" DataContext="{Binding ThreadingTimerHeartbeat}" Grid.ColumnSpan="2" />
+        <local:HeartbeatView Grid.Row="5" DataContext="{Binding TimersTimerHeartbeat}" Grid.ColumnSpan="2" />
+        <local:HeartbeatView Grid.Row="6" DataContext="{Binding DedicatedThreadHeartbeat}" Grid.ColumnSpan="2" />
     </Grid>
 </Window>

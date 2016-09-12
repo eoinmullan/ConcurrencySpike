@@ -15,6 +15,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
@@ -22,8 +23,9 @@
         <CheckBox Width="15" Height="15" Margin="5" HorizontalAlignment="Center" IsChecked="{Binding HeartbeatOn, Mode=TwoWay}" />
         <Ellipse Grid.Column="1" Width="20" Height="20" Margin="5" Fill="Gray" HorizontalAlignment="Center" />
         <Ellipse Grid.Column="1" Width="20" Height="20" Margin="5" Fill="Yellow" HorizontalAlignment="Center" Visibility="{Binding Path=HeartbeatIndicatorOn, Converter={StaticResource BoolToVis}}" />
-        <Label Grid.Column="2" Content="{Binding Description}" Padding="2,6" Margin="0,5" />
-        <TextBlock Grid.Column="3" Text="{Binding HeartbeatLatency}" Width="50" Padding="2,6" Margin="5" FontFamily="Courier New" />
+        <TextBlock Grid.Column="2" Text="{Binding HeartbeatCount}" Width="40" Padding="2,6" Margin="5" FontFamily="Courier New" />
+        <Label Grid.Column="3" Content="{Binding Description}" Padding="2,6" Margin="0,5" />
+        <TextBlock Grid.Column="4" Text="{Binding HeartbeatLatency}" Width="50" Padding="2,6" Margin="5" FontFamily="Courier New" />
 
     </Grid>
 </UserControl>

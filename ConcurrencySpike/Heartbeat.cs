@@ -8,6 +8,7 @@ namespace ConcurrencySpike {
         private long heartbeatLatency = 0;
         private bool heartbeatIndicatorOn;
         private readonly Stopwatch stopwatch;
+        private int heartbeatCount = 0;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -19,6 +20,7 @@ namespace ConcurrencySpike {
             HeartbeatLatency = stopwatch.ElapsedMilliseconds - lastHeartbeatTime;
             lastHeartbeatTime = stopwatch.ElapsedMilliseconds;
             HeartbeatIndicatorOn = true;
+            HeartbeatCount++;
             Task.Run(async () => {
                 await Task.Delay(150);
                 HeartbeatIndicatorOn = false;
@@ -38,6 +40,14 @@ namespace ConcurrencySpike {
             set {
                 heartbeatIndicatorOn = value;
                 RaisePropertyChanged(nameof(HeartbeatIndicatorOn));
+            }
+        }
+
+        public int HeartbeatCount {
+            get { return heartbeatCount; }
+            set {
+                heartbeatCount = value;
+                RaisePropertyChanged(nameof(HeartbeatCount));
             }
         }
 
