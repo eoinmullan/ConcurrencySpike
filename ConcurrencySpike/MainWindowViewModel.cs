@@ -18,6 +18,7 @@ namespace ConcurrencySpike {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public Heartbeat TaskRunHeartbeat => new TaskRunHeartbeat(stopwatch, HeartbeatInterval);
         public Heartbeat ThreadingTimerHeartbeat => new ThreadingTimerHeartbeat(stopwatch, HeartbeatInterval);
         public Heartbeat TimersTimerHeartbeat => new TimersTimerHeartbeat(stopwatch, HeartbeatInterval);
         public Heartbeat DedicatedThreadHeartbeat => new DedicatedThreadHeartbeat(stopwatch, HeartbeatInterval);
