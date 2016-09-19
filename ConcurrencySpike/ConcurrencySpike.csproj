@@ -59,6 +59,8 @@
     <Compile Include="HeartbeatViewModel.cs" />
     <Compile Include="ThreadTriggeredSynchronousHeartbeat.cs" />
     <Compile Include="Heartbeat.cs" />
+    <Compile Include="QueueJumpableTaskScheduler.cs" />
+    <Compile Include="QueueJumpingTaskHeartbeat.cs" />
     <Compile Include="TaskDelayHeartbeat.cs" />
     <Compile Include="ThreadTriggeredTaskRunHeartbeat.cs" />
     <Compile Include="ThreadingTimerHeartbeat.cs" />

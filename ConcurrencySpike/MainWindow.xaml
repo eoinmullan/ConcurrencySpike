@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConcurrencySpike"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="525">
+        Title="MainWindow" Height="500" Width="525">
     
     <Window.Background>
         <LinearGradientBrush EndPoint="0.504,1.5" StartPoint="0.504,0.03">
@@ -41,6 +41,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -94,5 +95,6 @@
         <local:HeartbeatView Grid.Row="5" DataContext="{Binding TimersTimerHeartbeat}" Grid.ColumnSpan="2" />
         <local:HeartbeatView Grid.Row="6" DataContext="{Binding TaskRunHeartbeat}" Grid.ColumnSpan="2" />
         <local:HeartbeatView Grid.Row="7" DataContext="{Binding DedicatedThreadHeartbeat}" Grid.ColumnSpan="2" />
+        <local:HeartbeatView Grid.Row="8" DataContext="{Binding QueueJumpingTaskHeartbeat}" Grid.ColumnSpan="2" />
     </Grid>
 </Window>

@@ -15,6 +15,7 @@ namespace ConcurrencySpike {
         private Stopwatch stopwatch = new Stopwatch();
         private Thread threadPoolMonitorThread;
         private Thread variableWorkloadThread;
+        private QueueJumpableTaskScheduler queueJumpableTaskScheduler = new QueueJumpableTaskScheduler();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -23,7 +24,7 @@ namespace ConcurrencySpike {
         public HeartbeatViewModel TimersTimerHeartbeat => new TimersTimerHeartbeat(stopwatch, HeartbeatInterval);
         public HeartbeatViewModel DedicatedThreadHeartbeat => new ThreadTriggeredSynchronousHeartbeat(stopwatch, HeartbeatInterval);
         public HeartbeatViewModel TaskRunHeartbeat => new ThreadTriggeredTaskRunHeartbeat(stopwatch, HeartbeatInterval);
-        public HeartbeatViewModel QueueJumpingTaskHeartbeat => new QueueJumpingTaskHeartbeat(stopwatch, HeartbeatInterval, queueJumpableTaskScheduler);
+        public HeartbeatViewModel QueueJumpingTaskHeartbeat => new ThreadTriggeredQueueJumpingHeartbeat(stopwatch, HeartbeatInterval, queueJumpableTaskScheduler);
 
         public MainWindowViewModel() {
             stopwatch.Start();
@@ -85,10 +86,13 @@ namespace ConcurrencySpike {
                 while (true) {
                     Thread.Sleep(workUnitIntervalMs);
                     var queueTime = stopwatch.ElapsedMilliseconds;
-                    Task.Run(() => {
+                    Task.Factory.StartNew(() => {                    
                         TaskLatency = stopwatch.ElapsedMilliseconds - queueTime;
                         Thread.Sleep(WorkUnitDurationMs);
-                    });
+                    },
+                    CancellationToken.None,
+                    TaskCreationOptions.None,
+                    queueJumpableTaskScheduler);
                 }
             });
             variableWorkloadThread.IsBackground = true;
