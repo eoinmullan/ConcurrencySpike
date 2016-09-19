@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DedicatedThreadHeartbeatBase.cs" />
+    <Compile Include="HeartbeatViewModel.cs" />
     <Compile Include="ThreadTriggeredSynchronousHeartbeat.cs" />
     <Compile Include="Heartbeat.cs" />
     <Compile Include="TaskDelayHeartbeat.cs" />

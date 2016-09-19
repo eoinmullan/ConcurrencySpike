@@ -18,11 +18,12 @@ namespace ConcurrencySpike {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public Heartbeat TaskDelayHeartbeat => new TaskDelayHeartbeat(stopwatch, HeartbeatInterval);
-        public Heartbeat ThreadingTimerHeartbeat => new ThreadingTimerHeartbeat(stopwatch, HeartbeatInterval);
-        public Heartbeat TimersTimerHeartbeat => new TimersTimerHeartbeat(stopwatch, HeartbeatInterval);
-        public Heartbeat DedicatedThreadHeartbeat => new ThreadTriggeredSynchronousHeartbeat(stopwatch, HeartbeatInterval);
-        public Heartbeat TaskRunHeartbeat => new ThreadTriggeredTaskRunHeartbeat(stopwatch, HeartbeatInterval);
+        public HeartbeatViewModel TaskDelayHeartbeat => new TaskDelayHeartbeat(stopwatch, HeartbeatInterval);
+        public HeartbeatViewModel ThreadingTimerHeartbeat => new ThreadingTimerHeartbeat(stopwatch, HeartbeatInterval);
+        public HeartbeatViewModel TimersTimerHeartbeat => new TimersTimerHeartbeat(stopwatch, HeartbeatInterval);
+        public HeartbeatViewModel DedicatedThreadHeartbeat => new ThreadTriggeredSynchronousHeartbeat(stopwatch, HeartbeatInterval);
+        public HeartbeatViewModel TaskRunHeartbeat => new ThreadTriggeredTaskRunHeartbeat(stopwatch, HeartbeatInterval);
+        public HeartbeatViewModel QueueJumpingTaskHeartbeat => new QueueJumpingTaskHeartbeat(stopwatch, HeartbeatInterval, queueJumpableTaskScheduler);
 
         public MainWindowViewModel() {
             stopwatch.Start();
