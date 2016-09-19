@@ -81,14 +81,14 @@
             <Slider Value="{Binding WorkUnitDurationMs, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Minimum="1" Maximum="2000"  />
             <TextBox Grid.Column="2" Text="{Binding WorkUnitDurationMs}" />
 
-            <Label Grid.Row="1" Content="Work Interval (Hz):" />
+            <Label Grid.Row="1" Content="Work Interval (ms):" />
             <Slider Grid.Row="1" Value="{Binding WorkUnitIntervalMs, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Minimum="1" Maximum="2000"  />
             <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding WorkUnitIntervalMs}" />
         </Grid>
 
         <Label Grid.Row="2" Content="Count" Padding="2" Margin="65,5,0,0" Height="20" />
         <Label Grid.Row="2" Grid.Column="1" Content="Interval" Padding="2" Margin="60,5,0,0" Height="20" />
-        <local:HeartbeatView Grid.Row="3" DataContext="{Binding TaskRunHeartbeat}" Grid.ColumnSpan="2" />
+        <local:HeartbeatView Grid.Row="3" DataContext="{Binding TaskDelayHeartbeat}" Grid.ColumnSpan="2" />
         <local:HeartbeatView Grid.Row="4" DataContext="{Binding ThreadingTimerHeartbeat}" Grid.ColumnSpan="2" />
         <local:HeartbeatView Grid.Row="5" DataContext="{Binding TimersTimerHeartbeat}" Grid.ColumnSpan="2" />
         <local:HeartbeatView Grid.Row="6" DataContext="{Binding DedicatedThreadHeartbeat}" Grid.ColumnSpan="2" />

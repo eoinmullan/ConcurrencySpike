@@ -57,7 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="DedicatedThreadHeartbeat.cs" />
     <Compile Include="Heartbeat.cs" />
-    <Compile Include="TaskRunHeartbeat.cs" />
+    <Compile Include="TaskDelayHeartbeat.cs" />
     <Compile Include="ThreadingTimerHeartbeat.cs" />
     <Compile Include="TimersTimerHeartbeat.cs" />
     <Page Include="HeartbeatView.xaml">

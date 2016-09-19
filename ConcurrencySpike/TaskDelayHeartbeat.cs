@@ -3,15 +3,15 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConcurrencySpike {
-    public class TaskRunHeartbeat : Heartbeat {
+    public class TaskDelayHeartbeat : Heartbeat {
         private bool heartbeatOn;
         private int heartbeatInterval;
         private CancellationTokenSource cts;
         private CancellationToken ct;
 
-        public override string Description => "Task Run Heartbeat";
+        public override string Description => "Task Delay Heartbeat";
 
-        public TaskRunHeartbeat(Stopwatch stopwatch, int heartbeatInterval) : base(stopwatch, heartbeatInterval) {
+        public TaskDelayHeartbeat(Stopwatch stopwatch, int heartbeatInterval) : base(stopwatch, heartbeatInterval) {
             this.heartbeatInterval = heartbeatInterval;
             HeartbeatOn = true;
         }
