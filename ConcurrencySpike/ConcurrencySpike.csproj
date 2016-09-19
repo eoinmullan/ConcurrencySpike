@@ -55,9 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DedicatedThreadHeartbeat.cs" />
+    <Compile Include="DedicatedThreadHeartbeatBase.cs" />
+    <Compile Include="ThreadTriggeredSynchronousHeartbeat.cs" />
     <Compile Include="Heartbeat.cs" />
     <Compile Include="TaskDelayHeartbeat.cs" />
+    <Compile Include="ThreadTriggeredTaskRunHeartbeat.cs" />
     <Compile Include="ThreadingTimerHeartbeat.cs" />
     <Compile Include="TimersTimerHeartbeat.cs" />
     <Page Include="HeartbeatView.xaml">
