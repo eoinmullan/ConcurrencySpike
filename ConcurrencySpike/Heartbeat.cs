@@ -6,7 +6,7 @@ namespace ConcurrencySpike {
         private long lastHeartbeatTime;
         private readonly Stopwatch stopwatch;
 
-        public Heartbeat(Stopwatch stopwatch, int heartbeatInterval) {
+        public Heartbeat(Stopwatch stopwatch) {
             this.stopwatch = stopwatch;
         }
 

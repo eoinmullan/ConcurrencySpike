@@ -24,7 +24,7 @@ namespace ConcurrencySpike {
             }
         }
 
-        public ThreadingTimerHeartbeat(Stopwatch stopwatch, int heartbeatInterval) : base(stopwatch, heartbeatInterval) {
+        public ThreadingTimerHeartbeat(Stopwatch stopwatch, int heartbeatInterval) : base(stopwatch) {
             this.heartbeatInterval = heartbeatInterval;
             heartbeatTimer = new Timer(DoHeartbeat, null, 0, heartbeatInterval);
         }

@@ -11,7 +11,7 @@ namespace ConcurrencySpike {
 
         public override string Description => "Task Delay Heartbeat";
 
-        public TaskDelayHeartbeat(Stopwatch stopwatch, int heartbeatInterval) : base(stopwatch, heartbeatInterval) {
+        public TaskDelayHeartbeat(Stopwatch stopwatch, int heartbeatInterval) : base(stopwatch) {
             this.heartbeatInterval = heartbeatInterval;
             HeartbeatOn = true;
         }

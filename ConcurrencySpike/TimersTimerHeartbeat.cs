@@ -15,7 +15,7 @@ namespace ConcurrencySpike {
             }
         }
 
-        public TimersTimerHeartbeat(Stopwatch stopwatch, int heartbeatInterval) : base(stopwatch, heartbeatInterval) {
+        public TimersTimerHeartbeat(Stopwatch stopwatch, int heartbeatInterval) : base(stopwatch) {
             timersTimerHeartbeat = new Timer(heartbeatInterval) { AutoReset = true };
             timersTimerHeartbeat.Elapsed += DoTimersTimerHeartbeat;
             timersTimerHeartbeat.Start(); ;

@@ -33,7 +33,7 @@ namespace ConcurrencySpike {
         }
 
         public abstract string Description { get; }
-        public abstract bool HeartbeatOn { get; set; }
+        public virtual bool HeartbeatOn { get; set; }
 
         protected void RaisePropertyChanged(string propertyName) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
