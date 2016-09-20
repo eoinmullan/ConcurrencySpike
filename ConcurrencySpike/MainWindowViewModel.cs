@@ -93,7 +93,7 @@ namespace ConcurrencySpike {
                     },
                     CancellationToken.None,
                     TaskCreationOptions.None,
-                    queueJumpableTaskScheduler);
+                    queueJumpableTaskScheduler.BackOfQueue);
                 }
             });
             variableWorkloadThread.IsBackground = true;
